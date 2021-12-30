@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe Esinfo do
   it "has a version number" do
     expect(Esinfo::VERSION).not_to be nil
