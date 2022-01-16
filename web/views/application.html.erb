@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= title %></title>
+
+    <link rel="stylesheet" href="<%= mount_path %>/stylesheets/pico.min.css">
+    <link rel="stylesheet" href="<%= mount_path %>/stylesheets/application.css">
+
+    <meta name="description" content="esinfo">
+    <meta property="og:title" content="<%= title %>">
+    <meta property="og:description" content="esinfo">
+    <meta property="og:image" content="<%= mount_path %>/images/apple-touch-icon.png">
+    <meta property="og:image:alt" content="esinfo">
+    <meta property="og:locale" content="en_GB">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" href="<%= mount_path %>/images/favicon.ico">
+    <link rel="apple-touch-icon" href="<%= mount_path %>/images/apple-touch-icon.png">
+    <meta name="theme-color" content="#FF00FF">
+  </head>
+
+  <body>
+    <script src="<%= mount_path %>/javascripts/application.js" nomodule></script>
+    <nav class="container-fluid">
+            <h1>ESInfo</h1>
+    </nav>
+    <main id="docs" class="container">
+      <aside width="30%">
+        <nav>
+          <details open="<%= nav_panel_open('cluster') %>">
+            <summary>Cluster</summary>
+            <ul>
+              <li>
+                <a class="secondary <%= nav_classes('status') %>" href="<%= path('status') %>">Status</a>
+              </li>
+            </ul>
+          </details>
+        </nav>
+      </aside>
+      <div role="document">
+        <section>
+
+          <%= content_for :template %>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,154 @@
+/*!
+ * Pico: Customs styles for Docs
+ */:root {
+  --icon-external:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgba(115, 130, 140, 0.999)' opacity='0.66' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'%3E%3C/path%3E%3Cpolyline points='15 3 21 3 21 9'%3E%3C/polyline%3E%3Cline x1='10' y1='14' x2='21' y2='3'%3E%3C/line%3E%3C/svg%3E");
+  --icon-check:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23FFF' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+  --icon-check-dark:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='rgba(0, 0, 0, 0.75)' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E")
+ }
+ :root:not([data-theme=dark]),
+ [data-theme=light] {
+  --invalid-color:#c62828;
+  --valid-color:#388e3c;
+  --nav-background-color:rgba(255, 255, 255, 0.7);
+  --nav-border-color:rgba(115, 130, 140, 0.2);
+  --nav-logo-color:#fff;
+  --article-code-background-color:#f9fafb
+ }
+ @media only screen and (prefers-color-scheme:dark) {
+  :root:not([data-theme=light]) {
+   --invalid-color:rgba(183, 28, 28, 0.5);
+   --valid-color:rgba(46, 125, 50, 0.5);
+   --nav-background-color:rgba(16, 24, 30, 0.8);
+   --nav-border-color:rgba(115, 130, 140, 0.2);
+   --nav-logo-color:#0e1419;
+   --article-code-background-color:var(--code-background-color)
+  }
+ }
+ [data-theme=dark] {
+  --invalid-color:rgba(183, 28, 28, 0.5);
+  --valid-color:rgba(46, 125, 50, 0.5);
+  --nav-background-color:rgba(16, 24, 30, 0.8);
+  --nav-border-color:rgba(115, 130, 140, 0.2);
+  --nav-logo-color:#0e1419;
+  --article-code-background-color:var(--code-background-color)
+ }
+ html {
+  scroll-behavior:smooth
+ }
+ body>main {
+  padding-top:0;
+ }
+ @media (min-width:992px) {
+  body>main {
+   --block-spacing-horizontal:calc(var(--spacing) * 1.75);
+   grid-column-gap:calc(var(--block-spacing-horizontal) * 3);
+   display:grid;
+   grid-template-columns:200px auto
+  }
+ }
+ @media (min-width:1200px) {
+  body>main {
+   --block-spacing-horizontal:calc(var(--spacing) * 2)
+  }
+ }
+ body>main div[role=document],
+ body>main>aside {
+  min-width:0
+ }
+ div[role=document] section a[href*="//"]:not([href*="https://picocss.com"]):not([role])::after {
+  display:inline-block;
+  width:1rem;
+  height:1rem;
+  background-image:var(--icon-external);
+  background-position:top center;
+  background-size:.66rem auto;
+  background-repeat:no-repeat;
+  content:""
+ }
+ svg {
+  height:1rem
+ }
+ main>aside nav {
+  width:100%;
+  padding-bottom:var(--block-spacing-vertical)
+ }
+ @media (min-width:992px) {
+  main>aside nav {
+   position:fixed;
+   width:200px;
+   max-height:calc(100vh - 5.5rem);
+   overflow-x:hidden;
+   overflow-y:auto
+  }
+ }
+ main>aside nav a#toggle-docs-navigation {
+  margin:0;
+  margin-bottom:var(--spacing);
+  padding:0;
+  padding-bottom:var(--spacing);
+  border-bottom:var(--border-width) solid var(--accordion-border-color)
+ }
+ main>aside nav a#toggle-docs-navigation svg {
+  margin-right:calc(var(--spacing) * .5);
+  vertical-align:-3px
+ }
+ @media (min-width:992px) {
+  main>aside nav a#toggle-docs-navigation {
+   display:none
+  }
+ }
+ main>aside nav.closed-on-mobile a#toggle-docs-navigation svg.collapse {
+  display:none
+ }
+ main>aside nav.closed-on-mobile details {
+  display:none
+ }
+ @media (min-width:992px) {
+  main>aside nav.closed-on-mobile details {
+   display:block
+  }
+  main>aside nav.closed-on-mobile>a#toggle-docs-navigation {
+   display:none
+  }
+ }
+ main>aside nav.open a#toggle-docs-navigation svg.expand {
+  display:none
+ }
+ main>aside li,
+ main>aside summary {
+  padding-top:0;
+  padding-bottom:0;
+  font-size:16px
+ }
+ main>aside li a {
+  padding:.375rem .5rem
+ }
+ main>aside li a svg {
+  vertical-align:middle
+ }
+ main>aside a.secondary:focus {
+  background-color:transparent;
+  color:var(--primary-hover)
+ }
+ main>aside a.active,
+ main>aside a.active:hover {
+  color:var(--primary)
+ }
+ main>aside details {
+  border-bottom:none
+ }
+ main>aside details summary {
+  color:var(--h1-color);
+  font-weight:300;
+  font-size:14px;
+  text-transform:uppercase
+ }
+ main>aside details summary::after {
+  display:none
+ }
+ main>aside details[open]>summary {
+  margin-bottom:calc(var(--spacing) * .75)
+ }
+ main>aside details[open]>summary:not(:focus) {
+  color:var(--h1-color)
+ }
