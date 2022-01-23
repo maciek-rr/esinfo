@@ -3,7 +3,7 @@
 module Esinfo
   class Web
     ROOT = File.expand_path("../../web", __dir__)
-    ASSETS = "#{ROOT}/assets"
+    ASSETS = "#{ROOT}/assets".freeze
 
     def self.call(env)
       new.call(env)

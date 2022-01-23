@@ -1,11 +1,11 @@
+# frozen_string_literal: true
+
 module Esinfo
-  class Collector
-    def initialize
-    end
+  class Probe
+    def initialize; end
 
     def cluster_health
-      # Config.elasticsearch_client.cluster.health()
+      Config.elasticsearch_client.cluster.health
     end
-
   end
 end

@@ -3,31 +3,31 @@
 module Esinfo
   class Web
     class View
-      ROOT = File.join(Esinfo::Web::ROOT, 'views')
+      ROOT = File.join(Esinfo::Web::ROOT, "views")
 
-      def initialize(template:, layout: 'application', helpers: [])
+      def initialize(template:, layout: "application", helpers: [])
         @template = template
         @layout = layout
         @helpers = helpers
       end
 
-      def render
+      def render(assigns: {})
         template_erb = ERB.new(template_content)
-        template_html = template_erb.result(render_context.get_binding)
+        template_html = template_erb.result(render_context(assigns).public_binding)
 
-        ctx = render_context = ViewContext.new
+        ctx = render_context
         ctx.add_template(:template, template_html)
 
         layout_erb = ERB.new(layout_content)
-        layout_erb.result(ctx.get_binding)
+        layout_erb.result(ctx.public_binding)
       end
 
       private
 
       attr_reader :template, :layout, :helpers
 
-      def render_context
-        render_context = ViewContext.new
+      def render_context(assigns = nil)
+        render_context = ViewContext.new(assigns: assigns)
         helpers.each { |helper| render_context.class.send(:include, helper) }
         render_context
       end

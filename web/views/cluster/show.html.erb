@@ -1,5 +1,38 @@
 <h2>Cluster status</h1>
-
+<table>
+  <tr>
+    <td>Cluster name</td>
+    <td><%= @cluster_health["cluster_name"] %></td>
+  </tr>
+  <tr>
+    <td>Cluster status</td>
+    <td><%= @cluster_health["status"] %></td>
+  </tr>
+  <tr>
+    <td>Number of nodes (number of data nodes)</td>
+    <td><%= @cluster_health["number_of_nodes"] %> (<%= @cluster_health["number_of_data_nodes"] %>)</td>
+  </tr>
+  <tr>
+    <td>Active shards (primary), active shards percentage</td>
+    <td><%= @cluster_health["active_shards"] %> (<%= @cluster_health["active_primary_shards"] %>), <%= @cluster_health["active_shards_percent_as_number"] %>%</td>
+  </tr>
+  <tr>
+    <td>Relocating shards (initializing shards)</td>
+    <td><%= @cluster_health["relocating_shards"] %> (<%= @cluster_health["initializing_shards"] %>)</td>
+  </tr>
+  <tr>
+    <td>Unassinged shards (delayed unassigned shards)</td>
+    <td><%= @cluster_health["unassigned_shards"] %> (<%= @cluster_health["delayed_unassigned_shards"] %>)</td>
+  </tr>
+  <tr>
+    <td>Number of unfinished fetches</td>
+    <td><%= @cluster_health["number_of_in_flight_fetch"] %></td>
+  </tr>
+  <tr>
+    <td>Number of pending tasks (tasks max waiting time in ms)</td>
+    <td><%= @cluster_health["number_of_pending_tasks"] %> (<%= @cluster_health["task_max_waiting_in_queue_millis"] %>)</td>
+  </tr>
+</table>
 <h5>Active Nodes</h5>
 <table>
   <thead>

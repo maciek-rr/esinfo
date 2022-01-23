@@ -3,8 +3,12 @@
 module Esinfo
   class Web
     class ViewContext
-      def initialize
+      attr_reader :assigns
+
+      def initialize(assigns: nil)
+        @assigns = assigns || {}
         @templates = {}
+        set_instance_variables
       end
 
       def content_for(template_name)
@@ -15,8 +19,14 @@ module Esinfo
         @templates[template_name] = content
       end
 
-      def get_binding
+      def public_binding
         binding
+      end
+
+      private
+
+      def set_instance_variables
+        assigns.each { |k, v| instance_variable_set("@#{k}", v) }
       end
     end
   end
