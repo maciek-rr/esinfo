@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><%= title %></title>
 
-    <link rel="stylesheet" href="<%= mount_path %>/stylesheets/pico.min.css">
-    <link rel="stylesheet" href="<%= mount_path %>/stylesheets/application.css">
+    <link rel="stylesheet" href="<%= mount_path %>/css/pico.min.css">
+    <link rel="stylesheet" href="<%= mount_path %>/css/application.css">
 
     <meta name="description" content="esinfo">
     <meta property="og:title" content="<%= title %>">
@@ -25,7 +25,7 @@
   <body>
     <script src="<%= mount_path %>/javascripts/application.js" nomodule></script>
     <nav class="container-fluid">
-            <h1>ESInfo</h1>
+      <h1>ESInfo</h1>
     </nav>
     <main id="docs" class="container">
       <aside width="30%">
@@ -42,7 +42,6 @@
       </aside>
       <div role="document">
         <section>
-
           <%= content_for :template %>
         </section>
       </div>

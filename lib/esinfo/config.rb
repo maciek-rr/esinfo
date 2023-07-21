@@ -2,11 +2,13 @@
 
 module Esinfo
   module Config
-    mattr_accessor :elasticsearch_client
-    mattr_accessor :json_parser
+    class << self
+      attr_accessor :elasticsearch_client
+      attr_accessor :json_parser
 
-    def self.json_parser
-      @json_parser ||= JSON
+      def json_parser
+        @json_parser ||= JSON
+      end
     end
   end
 end

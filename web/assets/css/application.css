@@ -152,3 +152,6 @@
  main>aside details[open]>summary:not(:focus) {
   color:var(--h1-color)
  }
+body {
+  color: red;
+}

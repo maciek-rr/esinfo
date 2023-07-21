@@ -12,7 +12,7 @@ module Esinfo
       end
 
       def render(assigns: {})
-        template_erb = ERB.new(template_content)
+        template_erb = ::ERB.new(template_content)
         template_html = template_erb.result(render_context(assigns).public_binding)
 
         ctx = render_context
