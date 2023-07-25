@@ -20,11 +20,17 @@ module Esinfo
     private
 
     def build_app
-      rules = []
-      ::Rack::Builder.new do
-        use Rack::Static, urls: ["/stylesheets", "/images", "/javascripts"], root: ASSETS, cascade: true,
-                          header_rules: rules
-        run Web::Application.new
+      Rack::Builder.new do
+        path = File.expand_path(File.dirname(__FILE__))
+        files = Dir.glob(File.join(path, "..", "..", "web", "assets", "**", "*")).each_with_object({}) do |file, mapping|
+          next unless File.file?(file)
+
+          short_file = file.sub(/\A().+web\/assets\//, "")
+          mapping["/admin/esinfo/#{short_file}"] = short_file
+          mapping["/#{short_file}"] = short_file
+        end
+        use Rack::Static, urls: files, root: File.expand_path(File.join(path, "..", "..", "web/assets"))
+        run Esinfo::Web::Application.new
       end
     end
   end
